@@ -12,8 +12,8 @@ class Image
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\Column(type="guid", unique=true)
      */
     private $id;
 
@@ -38,7 +38,7 @@ class Image
      */
     private $file;
 
-    public function getId(): ?int
+    public function getId(): ?guid
     {
         return $this->id;
     }
