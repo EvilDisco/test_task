@@ -4,9 +4,17 @@ namespace App\Entity;
 
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
+ *
+ * @ApiResource(
+ *     collectionOperations={"get","post"},
+ *     itemOperations={"get"},
+ *     paginationEnabled=true,
+ *     paginationItemsPerPage=12
+ * )
  */
 class Image
 {
