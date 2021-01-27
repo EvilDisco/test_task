@@ -38,6 +38,11 @@ class Image
      */
     private $file;
 
+    public function __toString()
+    {
+        return (string) $this->getName();
+    }
+
     public function getId(): ?guid
     {
         return $this->id;
