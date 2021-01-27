@@ -28,7 +28,7 @@ class Image
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="enum_image_category")
      */
     private $category;
 
