@@ -59,7 +59,7 @@ class Image
         return (string) $this->getName();
     }
 
-    public function getId(): ?guid
+    public function getId(): ?string
     {
         return $this->id;
     }
