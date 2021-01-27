@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
@@ -22,11 +24,15 @@ class Image
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      * @ORM\Column(type="guid", unique=true)
+     *
+     * @ApiFilter(SearchFilter::class, strategy="exact")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @ApiFilter(SearchFilter::class, strategy="ipartial")
      */
     private $name;
 
@@ -37,6 +43,8 @@ class Image
 
     /**
      * @ORM\Column(type="enum_image_category")
+     *
+     * @ApiFilter(SearchFilter::class, strategy="exact")
      */
     private $category;
 
