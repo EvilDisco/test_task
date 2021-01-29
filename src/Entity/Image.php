@@ -13,7 +13,12 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * @ORM\Entity(repositoryClass=ImageRepository::class)
  *
  * @ApiResource(
- *     collectionOperations={"get","post"},
+ *     collectionOperations={
+ *          "get",
+ *          "post"={
+ *              "security"="is_granted('ROLE_USER')",
+ *          }
+ *     },
  *     itemOperations={"get"},
  *     paginationEnabled=true,
  *     paginationItemsPerPage=12
