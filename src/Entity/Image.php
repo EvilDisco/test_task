@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
@@ -12,7 +13,12 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  * @ORM\Entity(repositoryClass=ImageRepository::class)
  *
  * @ApiResource(
- *     collectionOperations={"get","post"},
+ *     collectionOperations={
+ *          "get",
+ *          "post"={
+ *              "security"="is_granted('ROLE_USER')",
+ *          }
+ *     },
  *     itemOperations={"get"},
  *     paginationEnabled=true,
  *     paginationItemsPerPage=12
@@ -51,6 +57,8 @@ class Image
     /**
      * @ORM\OneToOne(targetEntity=File::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     *
+     * @ApiProperty(iri="http://schema.org/image")
      */
     private $file;
 
