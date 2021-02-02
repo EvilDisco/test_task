@@ -1,0 +1,25 @@
+POST https://127.0.0.1:8000/api/images
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Bearer <token>
+
+--WebAppBoundary
+Content-Disposition: form-data; name="name"
+
+Some beautiful picture
+
+--WebAppBoundary
+Content-Disposition: form-data; name="description"
+
+Here are some beautiful words for describing this beautiful picture
+
+--WebAppBoundary
+Content-Disposition: form-data; name="category"
+
+new
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="test_image.jpg"
+
+< test_image.jpg
+
+###
