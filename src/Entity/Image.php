@@ -82,6 +82,12 @@ class Image
      */
     private $file;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="images")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __toString()
     {
         return (string) $this->getName();
@@ -136,6 +142,18 @@ class Image
     public function setFile(File $file): self
     {
         $this->file = $file;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
