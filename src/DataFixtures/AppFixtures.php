@@ -44,6 +44,8 @@ class AppFixtures extends Fixture
 
             $img->setFile($file);
 
+            $img->setUser($user);
+
             $manager->persist($img);
         }
 
